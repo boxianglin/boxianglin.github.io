@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>听</title>
+  
+  
+  <link href="http://boxianglin.github.io/atom.xml" rel="self"/>
+  
+  <link href="http://boxianglin.github.io/"/>
+  <updated>2021-03-08T04:00:44.526Z</updated>
+  <id>http://boxianglin.github.io/</id>
+  
+  <author>
+    <name>Boxiang Lin</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java-LinkedList-Insert</title>
+    <link href="http://boxianglin.github.io/2021/03/07/LinkedList-Insert/"/>
+    <id>http://boxianglin.github.io/2021/03/07/LinkedList-Insert/</id>
+    <published>2021-03-08T03:12:37.671Z</published>
+    <updated>2021-03-08T04:00:44.526Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;em&gt;Discussion: Read values from a file and insert values into a LinkedList data structure&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The goal is that at any point of the insertion the LinkedList should be in sorted&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&quot;First-Approach-Using-the-JAVA-Library-LinkedList&quot;&gt;&lt;a href=&quot;#First-Approach-Using-the-JAVA-Library-LinkedList&quot; class=&quot;headerlink&quot; title=&quot;First Approach Using the JAVA Library LinkedList&quot;&gt;&lt;/a&gt;First Approach Using the JAVA Library LinkedList&lt;/h3&gt;&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;We passing the file address into the run method’s parameter and do the try catch.&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;class....&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; LinkedList&amp;lt;Integer&amp;gt; list = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; LinkedList&amp;lt;Integer&amp;gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String address)&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                read_insert(address); &lt;span class=&quot;comment&quot;&gt;//if address is valid, read it.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt;(IOException e)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                e.printStackTrace(); &lt;span class=&quot;comment&quot;&gt;//else, error resulted&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                System.exit(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;); &lt;span class=&quot;comment&quot;&gt;//exist the program&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Using the Buffered-Reader to read values from the file.&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;read_insert&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String address)&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;throws&lt;/span&gt; IOException &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		File text = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; File(address);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		BufferedReader br1 = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; BufferedReader(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; FileReader(text));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		String s = &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt;((s=br1.readLine())!=&lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;) &amp;#123;  &lt;span class=&quot;comment&quot;&gt;//read line by line&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			list.insert(Integer.parseInt(s)); &lt;span class=&quot;comment&quot;&gt;//parse to int and pass to insert method&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		br1.close();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="Data Structure" scheme="http://boxianglin.github.io/categories/Data-Structure/"/>
+    
+    
+    <category term="Data Structure" scheme="http://boxianglin.github.io/tags/Data-Structure/"/>
+    
+  </entry>
+  
+</feed>

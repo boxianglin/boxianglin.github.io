@@ -6,7 +6,7 @@
   <link href="http://boxianglin.github.io/atom.xml" rel="self"/>
   
   <link href="http://boxianglin.github.io/"/>
-  <updated>2021-05-23T00:25:11.662Z</updated>
+  <updated>2021-05-23T02:16:00.180Z</updated>
   <id>http://boxianglin.github.io/</id>
   
   <author>
@@ -18,19 +18,40 @@
   
   <entry>
     <title>Numerically Solve PDE</title>
-    <link href="http://boxianglin.github.io/2021/05/22/Numerical-Analysis/"/>
-    <id>http://boxianglin.github.io/2021/05/22/Numerical-Analysis/</id>
+    <link href="http://boxianglin.github.io/2021/05/22/NumericallyPDE/"/>
+    <id>http://boxianglin.github.io/2021/05/22/NumericallyPDE/</id>
     <published>2021-05-23T00:23:13.928Z</published>
-    <updated>2021-05-23T00:25:11.662Z</updated>
+    <updated>2021-05-23T02:16:00.180Z</updated>
     
-    <content type="html"><![CDATA[<p class='katex-block katex-error' title='ParseError: KaTeX parse error: No such environment: align* at position 7: \begin{̲a̲l̲i̲g̲n̲*̲}̲&amp; \text{Given …'>\begin{align*}&amp; \text{Given the PDE (Diffusion)} \\&amp; \partial_tu=D\partial_x^2u,\ for\ x\ \in[0,1],and\ t&gt;0\\&amp; the\ initial\ condition\ u(x,0)=\begin{cases}x,  &amp; \text{if } 0\leq x \leq 1/2\\1-x, &amp; \text{if } 1/2 &lt; x\leq1   \end{cases},\text{  the boundary condition } u(0,t)=u(1,t)=0  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \\end{align*}</p>]]></content>
+    <content type="html"><![CDATA[<h3 id="sample-partial-differential-equation">Sample Partial Differential Equation</h3><p class='katex-block katex-error' title='ParseError: KaTeX parse error: No such environment: align* at position 7: \begin{̲a̲l̲i̲g̲n̲*̲}̲&amp; \text{Suppos…'>\begin{align*}&amp; \text{Suppose given the PDE (Diffusion)} \\&amp; \partial_tu=D\partial_x^2u,\ for\ x\ \in[0,1],and\ t&gt;0\\\\&amp; \text{Exact Solution (can be found in multiple PDEs textbooks): }\\&amp; u(x,t) = \sum_{k=1}^{n}=\frac{4}{(k\pi)^2}sin(\frac{k\pi}{2})sin(k\pi x)e^{-0.5(k\pi )^2t}\\\\&amp; \text{We are going to compute the numerical solution with }\\&amp; \text{the given information below. }\\\\&amp; \text{for }x \in[0,1] \text{ and t &gt; 0 :}\\&amp; the\ initial\ condition\ u(x,0)=\begin{cases}x,  &amp; \text{if } 0\leq x \leq 1/2\\1-x, &amp; \text{if } 1/2 &lt; x\leq1   \end{cases}\\&amp;\text{the boundary condition } u(0,t)=u(1,t)=0 \\\\&amp; \text{The Explicit Difference Schema: }\\&amp; \frac{u_j^{n+1}-u_j^n}{\Delta t}= D\frac{u_{j+1}^n-2u_j^n+u_{j-1}^n}{(\Delta x)^2}, where\ D=\frac{1}{2}\\\\&amp;\text{Take }\Delta x=0.1, \Delta t=1/100 \text{ to proceed the calculations;}\end{align*}</p><span id="more"></span><h3 id="solving-idea-for-a-particular-t">Solving Idea for a particular t</h3><p class='katex-block katex-error' title='ParseError: KaTeX parse error: No such environment: align* at position 7: \begin{̲a̲l̲i̲g̲n̲*̲}̲&amp; \text{Use of…'>\begin{align*}&amp; \text{Use of the finite difference scheme for discretizing partial derivatives}\\&amp; \text{reduces the problem to vector-matrix multiplication.}\\\\&amp; \text{Where the unknown vector }U^n=(U_1^n,U_2^n,...U_N^n)^T\text{ refers to sample}\\&amp; \text{of grid values of the solution function }u(x,t) \text{ evaluated at } t = t_n.\\\\&amp; \text{Then what we focuse on for }u_j^n=u(x_j,t_n) \text{ is in a vector of }U^n to\ U^{n+1} \\\\&amp; \text{To calculated the }U^{n+1} , \text{we must use the explicit difference scheme}\end{align*}</p><h3 id="a-look-of-explicit-difference-scheme-equation">A Look of Explicit Difference Scheme Equation</h3><p class='katex-block katex-error' title='ParseError: KaTeX parse error: No such environment: align* at position 7: \begin{̲a̲l̲i̲g̲n̲*̲}̲&amp; \text{As we …'>\begin{align*}&amp; \text{As we said we interested the vector }U^{n+1} = \text{a set of } u_j^{n+1}, j\ \text{varies};\\\\&amp; \text{Hence we would like to rearrange the equation to:}\\\\&amp; u_j^{n+1}= \frac{1}{2}\frac{\Delta t}{(\Delta x)^2}(u_{j+1}^n-2u_j^n+u_{j-1^n})+u_j^n\\&amp; = u(x_j,t_{n+1})= \frac{1}{2}\frac{\Delta t}{(\Delta x)^2}[u(x_{j+1},t_n)-2u(x_j,t_n)+u(x_{j-1},t_n)]+u(x_j,t_n)\\\\&amp; \text{for easier programming purpose, we shift the index of t left by one}\\&amp; = u(x_j,t_{n})= \frac{1}{2}\frac{\Delta t}{(\Delta x)^2}[u(x_{j+1},t_{n-1})-2u(x_j,t_{n-1})+u(x_{j-1},t_{n-1})]+u(x_j,t_{n-1})&amp;\end{align*}</p><h3 id="a-look-of-how-initial-and-boundary-condition-are-important">A Look of How Initial and Boundary Condition are Important</h3><p class='katex-block katex-error' title='ParseError: KaTeX parse error: No such environment: align* at position 7: \begin{̲a̲l̲i̲g̲n̲*̲}̲&amp; \text{The ex…'>\begin{align*}&amp; \text{The expression of } u(t,x)\text{ in 2D matrix: }\\\\&amp; \begin{matrix}&amp; 1 &amp; 2&amp;3&amp; \cdots&amp;n\\1&amp; u(0,0) &amp; u(0, 1\Delta t) &amp; u(0,2\Delta t) &amp; \cdots &amp;  u(0,n\Delta t) \\2&amp; u(1 \Delta x,0) &amp; \cdots &amp; \cdots&amp; \cdots&amp; u(1\Delta x,n\Delta t)  \\3&amp; u(2 \Delta x, 0) &amp; \cdots&amp; \cdots&amp; \cdots&amp; u(2\Delta x,n\Delta t)\\&amp;.\\&amp;. \\11&amp; u(1,0)&amp;\end{matrix}\\\\&amp;\text{The initial condition givien the cover the values for first columns}\\&amp;\text{And the boundary condition cover the values for first and last rows}\\\\&amp;\text{Now, the expression of }u(t,x) \text{ should be:} \\\\&amp; \begin{matrix}&amp; 1 &amp; 2&amp;3&amp; \cdots&amp;n\\1&amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp;  0 \\2&amp; 0.1 &amp; u(1\Delta x,1\Delta t) &amp; \cdots&amp; \cdots&amp; u(1\Delta x,n\Delta t)  \\3&amp; 0.2 &amp; u(2\Delta x,1\Delta t) &amp; \cdots&amp; \cdots&amp; u(2\Delta x,n\Delta t)\\&amp;.\\5&amp; 0.5 &amp;\cdots&amp; \cdots&amp; \cdots&amp; \\6&amp; 0.4 &amp; \cdots&amp; \cdots&amp; \cdots&amp; \\7&amp; 0.3 &amp;\cdots&amp; \cdots&amp; \cdots&amp; \\&amp;. \\11&amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp;  0&amp;\end{matrix}\\\\\\&amp; \text{Now from this matrix, we see the pattern of how explicit difference help}\\&amp; \text{us to calculate the  } u(x_j,t_n);\\\\&amp; \text{For example: }u(x_2,t_2),\text{we need }u(x_1,t_1)，u(x_2,t_1),u(x_3,t_1)&#039;s \text{ values}\\&amp;\text{to explicit difference equation: }\\&amp; u(x_j,t_{n})= \frac{1}{2}\frac{\Delta t}{(\Delta x)^2}[u(x_{j+1},t_{n-1})-2u(x_j,t_{n-1})+u(x_{j-1},t_{n-1})]+u(x_j,t_{n-1})\\\\&amp; \text{Hence we know we must calculated the current columns&#039;s val then proceed to}\\&amp; \text{the row }.\end{align*}</p><h3 id="matlab-implementations">MATLAB Implementations</h3>]]></content>
     
     
-      
-      
-    <summary type="html">&lt;p class=&#39;katex-block katex-error&#39; title=&#39;ParseError: KaTeX parse error: No such environment: align* at position 7: \begin{̲a̲l̲i̲g̲n̲*̲}̲
-&amp;</summary>
-      
+    <summary type="html">&lt;h3 id=&quot;sample-partial-differential-equation&quot;&gt;Sample Partial Differential Equation&lt;/h3&gt;
+&lt;p class=&#39;katex-block katex-error&#39; title=&#39;ParseError: KaTeX parse error: No such environment: align* at position 7: \begin{̲a̲l̲i̲g̲n̲*̲}̲
+&amp;amp; \text{Suppos…&#39;&gt;\begin{align*}
+&amp;amp; \text{Suppose given the PDE (Diffusion)} \\
+&amp;amp; \partial_tu=D\partial_x^2u,\ for\ x\ \in[0,1],and\ t&amp;gt;0\\
+\\
+&amp;amp; \text{Exact Solution (can be found in multiple PDEs textbooks): }\\
+&amp;amp; u(x,t) = \sum_{k=1}^{n}=\frac{4}{(k\pi)^2}sin(\frac{k\pi}{2})sin(k\pi x)e^{-0.5(k\pi )^2t}\\
+\\
+&amp;amp; \text{We are going to compute the numerical solution with }\\
+&amp;amp; \text{the given information below. }\\
+\\
+&amp;amp; \text{for }x \in[0,1] \text{ and t &amp;gt; 0 :}\\
+&amp;amp; the\ initial\ condition\ u(x,0)=\begin{cases}
+x,  &amp;amp; \text{if } 0\leq x \leq 1/2\\
+1-x, &amp;amp; \text{if } 1/2 &amp;lt; x\leq1   
+\end{cases}\\
+&amp;amp;\text{the boundary condition } u(0,t)=u(1,t)=0 \\
+\\
+&amp;amp; \text{The Explicit Difference Schema: }\\
+&amp;amp; \frac{u_j^{n+1}-u_j^n}{\Delta t}= D\frac{u_{j+1}^n-2u_j^n+u_{j-1}^n}{(\Delta x)^2}, where\ D=\frac{1}{2}\\
+\\
+
+&amp;amp;\text{Take }\Delta x=0.1, \Delta t=1/100 \text{ to proceed the calculations;}
+\end{align*}
+&lt;/p&gt;</summary>
     
     
     

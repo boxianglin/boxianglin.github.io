@@ -30,7 +30,7 @@
   
 
 <link rel="alternate" href="/atom.xml" title="Boxiang's Blog" type="application/atom+xml">
-</head>
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
 
 </html>
 
@@ -127,6 +127,68 @@
     
     
     <article
+  id="post-Numerical-Analysis"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/05/22/Numerical-Analysis/"
+    >Numerically Solve PDE</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/05/22/Numerical-Analysis/" class="article-date">
+  <time datetime="2021-05-23T00:23:13.928Z" itemprop="datePublished">2021-05-22</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Numerical-Analysis/">Numerical Analysis</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p class='katex-block katex-error' title='ParseError: KaTeX parse error: No such environment: align* at position 7: \begin{̲a̲l̲i̲g̲n̲*̲}̲
+&amp; \text{Given …'>\begin{align*}
+&amp; \text{Given the PDE (Diffusion)} \\
+&amp; \partial_tu=D\partial_x^2u,\ for\ x\ \in[0,1],and\ t&gt;0\\
+&amp; the\ initial\ condition\ u(x,0)=\begin{cases}
+x,  &amp; \text{if } 0\leq x \leq 1/2\\
+1-x, &amp; \text{if } 1/2 &lt; x\leq1   
+\end{cases},\text{  the boundary condition } u(0,t)=u(1,t)=0  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\end{align*}
+</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Numerical-Analysis/" rel="tag">Numerical Analysis</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-LinkedList-Insert"
   class="article article-type-post"
   itemscope
@@ -159,12 +221,17 @@
        
   <p><em>Discussion: Read values from a file and insert values into a LinkedList data structure</em></p>
 <p><em>The goal is that at any point of the insertion the LinkedList should be in sorted</em></p>
-<h3 id="First-Approach-Using-the-JAVA-Library-LinkedList"><a href="#First-Approach-Using-the-JAVA-Library-LinkedList" class="headerlink" title="First Approach Using the JAVA Library LinkedList"></a>First Approach Using the JAVA Library LinkedList</h3><hr>
+<h3 id="first-approach-using-the-java-library-linkedlist">First Approach Using the JAVA Library LinkedList</h3>
+<hr>
 <ul>
-<li><p>We passing the file address into the run method’s parameter and do the try catch.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class....&#123;</span><br><span class="line">    </span><br><span class="line">	<span class="keyword">private</span> LinkedList&lt;Integer&gt; list = <span class="keyword">new</span> <span class="keyword">new</span> LinkedList&lt;Integer&gt;();</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">(String address)</span></span>&#123;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">                read_insert(address); <span class="comment">//if address is valid, read it.</span></span><br><span class="line">            &#125;<span class="keyword">catch</span>(IOException e)&#123;</span><br><span class="line">                e.printStackTrace(); <span class="comment">//else, error resulted</span></span><br><span class="line">                System.exit(<span class="number">0</span>); <span class="comment">//exist the program</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>Using the Buffered-Reader to read values from the file.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">read_insert</span><span class="params">(String address)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		File text = <span class="keyword">new</span> File(address);</span><br><span class="line">		BufferedReader br1 = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> FileReader(text));</span><br><span class="line">		String s = <span class="keyword">null</span>; </span><br><span class="line">		<span class="keyword">while</span>((s=br1.readLine())!=<span class="keyword">null</span>) &#123;  <span class="comment">//read line by line</span></span><br><span class="line">			list.insert(Integer.parseInt(s)); <span class="comment">//parse to int and pass to insert method</span></span><br><span class="line">		&#125;</span><br><span class="line">		br1.close();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>
+<p>We passing the file address into the run method’s parameter and do the try catch.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class....&#123;</span><br><span class="line">    </span><br><span class="line">	<span class="keyword">private</span> LinkedList&lt;Integer&gt; list = <span class="keyword">new</span> <span class="keyword">new</span> LinkedList&lt;Integer&gt;();</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">(String address)</span></span>&#123;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">                read_insert(address); <span class="comment">//if address is valid, read it.</span></span><br><span class="line">            &#125;<span class="keyword">catch</span>(IOException e)&#123;</span><br><span class="line">                e.printStackTrace(); <span class="comment">//else, error resulted</span></span><br><span class="line">                System.exit(<span class="number">0</span>); <span class="comment">//exist the program</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>Using the Buffered-Reader to read values from the file.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">read_insert</span><span class="params">(String address)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		File text = <span class="keyword">new</span> File(address);</span><br><span class="line">		BufferedReader br1 = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> FileReader(text));</span><br><span class="line">		String s = <span class="keyword">null</span>; </span><br><span class="line">		<span class="keyword">while</span>((s=br1.readLine())!=<span class="keyword">null</span>) &#123;  <span class="comment">//read line by line</span></span><br><span class="line">			list.insert(Integer.parseInt(s)); <span class="comment">//parse to int and pass to insert method</span></span><br><span class="line">		&#125;</span><br><span class="line">		br1.close();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
 </ul> 
       <a class="article-more-link" href="/2021/03/07/LinkedList-Insert/"
         >Read More ...</a
@@ -454,6 +521,30 @@
 </script>
 
 <!-- MathJax -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
 
 <!-- Katex -->
 

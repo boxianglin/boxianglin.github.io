@@ -5,45 +5,46 @@
     <url>/2021/03/07/LinkedList-Insert/</url>
     <content><![CDATA[<p><em>Discussion: Read values from a file and insert values into a LinkedList data structure</em></p>
 <p><em>The goal is that at any point of the insertion the LinkedList should be in sorted</em></p>
-<h3 id="First-Approach-Using-the-JAVA-Library-LinkedList"><a href="#First-Approach-Using-the-JAVA-Library-LinkedList" class="headerlink" title="First Approach Using the JAVA Library LinkedList"></a>First Approach Using the JAVA Library LinkedList</h3><hr>
+<h3 id="first-approach-using-the-java-library-linkedlist">First Approach Using the JAVA Library LinkedList</h3>
+<hr>
 <ul>
-<li><p>We passing the file address into the run method’s parameter and do the try catch.</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">class....&#123;</span><br><span class="line">    </span><br><span class="line">	<span class="keyword">private</span> LinkedList&lt;Integer&gt; list = <span class="keyword">new</span> <span class="keyword">new</span> LinkedList&lt;Integer&gt;();</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">(String address)</span></span>&#123;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">                read_insert(address); <span class="comment">//if address is valid, read it.</span></span><br><span class="line">            &#125;<span class="keyword">catch</span>(IOException e)&#123;</span><br><span class="line">                e.printStackTrace(); <span class="comment">//else, error resulted</span></span><br><span class="line">                System.exit(<span class="number">0</span>); <span class="comment">//exist the program</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>Using the Buffered-Reader to read values from the file.</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">read_insert</span><span class="params">(String address)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		File text = <span class="keyword">new</span> File(address);</span><br><span class="line">		BufferedReader br1 = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> FileReader(text));</span><br><span class="line">		String s = <span class="keyword">null</span>; </span><br><span class="line">		<span class="keyword">while</span>((s=br1.readLine())!=<span class="keyword">null</span>) &#123;  <span class="comment">//read line by line</span></span><br><span class="line">			list.insert(Integer.parseInt(s)); <span class="comment">//parse to int and pass to insert method</span></span><br><span class="line">		&#125;</span><br><span class="line">		br1.close();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>
+<p>We passing the file address into the run method’s parameter and do the try catch.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">class....&#123;</span><br><span class="line">    </span><br><span class="line">	<span class="keyword">private</span> LinkedList&lt;Integer&gt; list = <span class="keyword">new</span> <span class="keyword">new</span> LinkedList&lt;Integer&gt;();</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">(String address)</span></span>&#123;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">                read_insert(address); <span class="comment">//if address is valid, read it.</span></span><br><span class="line">            &#125;<span class="keyword">catch</span>(IOException e)&#123;</span><br><span class="line">                e.printStackTrace(); <span class="comment">//else, error resulted</span></span><br><span class="line">                System.exit(<span class="number">0</span>); <span class="comment">//exist the program</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>Using the Buffered-Reader to read values from the file.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">read_insert</span><span class="params">(String address)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		File text = <span class="keyword">new</span> File(address);</span><br><span class="line">		BufferedReader br1 = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> FileReader(text));</span><br><span class="line">		String s = <span class="keyword">null</span>; </span><br><span class="line">		<span class="keyword">while</span>((s=br1.readLine())!=<span class="keyword">null</span>) &#123;  <span class="comment">//read line by line</span></span><br><span class="line">			list.insert(Integer.parseInt(s)); <span class="comment">//parse to int and pass to insert method</span></span><br><span class="line">		&#125;</span><br><span class="line">		br1.close();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 <span id="more"></span>
-
 <ul>
-<li><p>Now we created a insert method to inserting each value that pass in from the Buffered-Reader.</p>
+<li>
+<p>Now we created a insert method to inserting each value that pass in from the Buffered-Reader.</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(list.size() == <span class="number">0</span> || value &lt; list.getFirst() ) &#123;  </span><br><span class="line">			list.addFirst(value); <span class="comment">//insert at the head if list is empty and </span></span><br><span class="line">                                  <span class="comment">//if val &lt; head&#x27;s val</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(value &gt; list.getLast() ) &#123;</span><br><span class="line">			list.addLast(value);  <span class="comment">//insert to the tail if val &gt; tail&#x27;s value</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			Iterator&lt;Integer&gt; it = list.iterator();  </span><br><span class="line">			<span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">		       <span class="keyword">while</span>(it.hasNext() &amp;&amp; value &gt;= it.next())&#123;  </span><br><span class="line">		    	   index ++;     <span class="comment">//if the list is not empty and val still &gt;= list&#x27;s                                    //next value, index keep increases by 1</span></span><br><span class="line">		        &#125;</span><br><span class="line">		     list.add(index,value); <span class="comment">//usingg the java library to add the value at specific index.</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <p>**The insert runtime complexity is O(N + N) = O(N) **</p>
 <p>**NOTICE: **<em>The runtime complexity could be worst to O(N^2) if our insert algorithm suppose as below:</em></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(list.size() == <span class="number">0</span> || value &lt; list.getFirst() ) &#123;  </span><br><span class="line">			list.addFirst(value); <span class="comment">//insert at the head if list is empty and </span></span><br><span class="line">                                  <span class="comment">//if val &lt; head&#x27;s val</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(value &gt; list.getLast() ) &#123;</span><br><span class="line">			list.addLast(value);  <span class="comment">//insert to the tail if val &gt; tail&#x27;s value</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;list.size(); i++)&#123;</span><br><span class="line">				<span class="keyword">if</span>(val&lt;list.get(i))&#123;</span><br><span class="line">					list.add(i,value);</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
-
 <p><em><u>This algorithm is not good in runtime and often time algorithm that involve break is not safe, however, this algorithm might be OKAY for a small size of values file but cause runtime error if size of file is large</u></em></p>
-<h3 id="Second-Approach-Using-Self-Define-Singly-LinkedList"><a href="#Second-Approach-Using-Self-Define-Singly-LinkedList" class="headerlink" title="Second Approach Using Self-Define Singly LinkedList"></a>Second Approach Using Self-Define Singly LinkedList</h3><hr>
+<h3 id="second-approach-using-self-define-singly-linkedlist">Second Approach Using Self-Define Singly LinkedList</h3>
+<hr>
 <p><em>We know that LinkedList data structure basically is objects that linked to each other, each object contains some value</em></p>
 <p><strong>Singly LinkedList looks like this:</strong></p>
 <p><img src="https://github.com/boxianglin/Storage/blob/main/LinkedList-Insert%20Post/L1.png?raw=true" alt="avatar"></p>
 <p><em>that each of the rectangle is a object, value is inside of the object, and arrow is the self-define data type that help to connect up the object, often we using the object as a data type for the arrow</em></p>
 <p>**Now our object that to store the value will be as follows: **</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> val;</span><br><span class="line">	ListNode next;   <span class="comment">//arrow</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">ListNode</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.val = val;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <p><strong>and our LinkedList is a collection of the ListNodes</strong></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingleLinkedList</span> </span>&#123;</span><br><span class="line">	 </span><br><span class="line">	</span><br><span class="line">	ListNode head;</span><br><span class="line">	<span class="keyword">int</span> size;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">SingleLinkedList</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		size = <span class="number">0</span>;</span><br><span class="line">		head = <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><strong>OKAY, So now lets implementing the insert method</strong>: <em>same idea as the previous one but instead now we are creating our own LinkList instead of using the java library. So we will be do some mollifications to the add(index, val) method that was in Java Library.</em></p>
 <p><em>Suppose we are inserting 3 to the LinkedList:</em></p>
 <p><img src="https://github.com/boxianglin/Storage/blob/main/LinkedList-Insert%20Post/L2.png?raw=true" alt="avatar"></p>
-<p><em>We will let  3 –&gt; 4 first, then let 2 –&gt; 3.</em>  </p>
+<p><em>We will let  3 --&gt; 4 first, then let 2 --&gt; 3.</em></p>
 <p><img src="https://github.com/boxianglin/Storage/blob/main/LinkedList-Insert%20Post/L3.png?raw=true" alt="avatar"></p>
 <p><strong>So, lets do it to the codes</strong></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> data)</span> </span>&#123;	 </span><br><span class="line">		<span class="comment">//list is empty or val that greater than first node&#x27;s value, swap them </span></span><br><span class="line">		<span class="keyword">if</span>(head == <span class="keyword">null</span> || head.val &gt; data) &#123;</span><br><span class="line">			ListNode newHead= <span class="keyword">new</span> ListNode(data);</span><br><span class="line">			newHead.next = head;</span><br><span class="line">			head = newHead;</span><br><span class="line">			size++;</span><br><span class="line">		&#125;<span class="keyword">else</span> &#123;  <span class="comment">//cur as a temporary node that use to traverse the list</span></span><br><span class="line">			ListNode cur = head;</span><br><span class="line">			<span class="keyword">while</span>(cur.next != <span class="keyword">null</span> &amp;&amp; cur.next.val&lt;data) &#123;</span><br><span class="line">				cur = cur.next; <span class="comment">//if value greater than node&#x27;s value, keep going </span></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(cur.next == <span class="keyword">null</span>) &#123; <span class="comment">//case to put the value to the tail</span></span><br><span class="line">				ListNode nextVal = <span class="keyword">new</span> ListNode(data);</span><br><span class="line">				cur.next = nextVal;</span><br><span class="line">				size++;</span><br><span class="line">			&#125;<span class="keyword">else</span> &#123;    <span class="comment">//case to insert</span></span><br><span class="line">				ListNode newNext = <span class="keyword">new</span> ListNode(data);</span><br><span class="line">				newNext.next = cur.next; <span class="comment">//cur.next point to the new val</span></span><br><span class="line">				cur.next = newNext; <span class="comment">//new val then be the new cur.next</span></span><br><span class="line">				size++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <p><strong>This algorithm of insert takes runtime of O(N), we are basically traverse through the list and doing some pointing direction change necessary</strong></p>
-<p>Alright! This is two approach for <strong>insert algorithm</strong> that to main the list sorted at any given point. </p>
+<p>Alright! This is two approach for <strong>insert algorithm</strong> that to main the list sorted at any given point.</p>
 <p>I will upload the full version of the codes on my GitHub shortly.</p>
 </li>
 </ul>
@@ -53,6 +54,27 @@
       </categories>
       <tags>
         <tag>Data Structure</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Numerically Solve PDE</title>
+    <url>/2021/05/22/Numerical-Analysis/</url>
+    <content><![CDATA[<p class='katex-block katex-error' title='ParseError: KaTeX parse error: No such environment: align* at position 7: \begin{̲a̲l̲i̲g̲n̲*̲}̲
+&amp; \text{Given …'>\begin{align*}
+&amp; \text{Given the PDE (Diffusion)} \\
+&amp; \partial_tu=D\partial_x^2u,\ for\ x\ \in[0,1],and\ t&gt;0\\
+&amp; the\ initial\ condition\ u(x,0)=\begin{cases}
+x,  &amp; \text{if } 0\leq x \leq 1/2\\
+1-x, &amp; \text{if } 1/2 &lt; x\leq1   
+\end{cases},\text{  the boundary condition } u(0,t)=u(1,t)=0  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\end{align*}
+</p>
+]]></content>
+      <categories>
+        <category>Numerical Analysis</category>
+      </categories>
+      <tags>
+        <tag>Numerical Analysis</tag>
       </tags>
   </entry>
 </search>

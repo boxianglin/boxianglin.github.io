@@ -30,7 +30,7 @@
   
 
 <link rel="alternate" href="/atom.xml" title="Boxiang's Blog" type="application/atom+xml">
-</head>
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
 
 </html>
 
@@ -72,8 +72,7 @@
     <div class="article-entry" itemprop="articleBody">
        
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Hello ... </span><br><span class="line"></span><br><span class="line">String role = <span class="keyword">new</span> String [<span class="string">&quot;computer science student&quot;</span>, <span class="string">&quot;future software engineer&quot;</span>, <span class="string">&quot;Ping Pon master&quot;</span>, <span class="string">&quot;Dream Fighter&quot;</span> ]</span><br><span class="line">    </span><br><span class="line">String hobbies = <span class="keyword">new</span> String[<span class="string">&quot;Algorithm&quot;</span>, <span class="string">&quot;Web-Development&quot;</span>, <span class="string">&quot;AI&quot;</span>, <span class="string">&quot;Sport&quot;</span>, <span class="string">&quot;Travel&quot;</span>]</span><br><span class="line">    </span><br><span class="line">System.out.print(<span class="string">&quot;Welcome to my blog&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>………….. </p>
+<p>…</p>
 <p><em>A CS student at Washington State writing some stuffs for fun</em></p>
 <p><em>By: Boxiang Lin</em></p>
  
@@ -169,7 +168,7 @@
     app_key: "",
     path: window.location.pathname,
     avatar: "monsterid",
-    placeholder: "给我的文章加点评论吧~",
+    placeholder: "Lets add some comments~",
     recordIP: true,
   });
   const infoEle = document.querySelector("#vcomments .info");
@@ -465,6 +464,30 @@
 </script>
 
 <!-- MathJax -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
 
 <!-- Katex -->
 

@@ -121,7 +121,7 @@ x,  &amp; \text{if } 0\leq x \leq 1/2\\
 <h4 id="a-look-of-how-initial-and-boundary-condition-are-important">A Look of How Initial and Boundary Condition are Important</h4>
 <p class='katex-block katex-error' title='ParseError: KaTeX parse error: No such environment: align* at position 7: \begin{̲a̲l̲i̲g̲n̲*̲}̲
 &amp; \text{The ex…'>\begin{align*}
-&amp; \text{The expression of } u(t,x)\text{ in 2D matrix: }\\
+&amp; \text{The expression of } u(x,t)\text{ in 2D matrix: }\\
 \\
 &amp; \begin{matrix}
 &amp; 1 &amp; 2&amp;3&amp; \cdots&amp;n\\
@@ -136,7 +136,7 @@ x,  &amp; \text{if } 0\leq x \leq 1/2\\
 &amp;\text{The initial condition givien the cover the values for first columns}\\
 &amp;\text{And the boundary condition cover the values for first and last rows}\\
 \\
-&amp;\text{Now, the expression of }u(t,x) \text{ should be:} \\
+&amp;\text{Now, the expression of }u(x,t) \text{ should be:} \\
 \\
 &amp; \begin{matrix}
 &amp; 1 &amp; 2&amp;3&amp; \cdots&amp;n\\

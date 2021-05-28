@@ -157,34 +157,31 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <p>For phone user, the css might not be properly rendered for MathJax, please visit<br>
-the pdf file at <a target="_blank" rel="noopener" href="https://github.com/boxianglin/Storage/blob/main/Numerical-Solve-PDE-Post/NumericallyPDEs.pdf">here</a></p>
-<h4 id="sample-partial-differential-equation">Sample Partial Differential Equation</h4>
-<p class='katex-block katex-error' title='ParseError: KaTeX parse error: No such environment: align* at position 7: \begin{̲a̲l̲i̲g̲n̲*̲}̲
-&amp; \text{Suppos…'>\begin{align*}
-&amp; \text{Suppose given the PDE (Diffusion)} \\
-&amp; \partial_tu=D\partial_x^2u,\ for\ x\ \in[0,1],and\ t&gt;0\\
+  <p>For phone user, the css might not be properly rendered for MathJax, please visit<br>the pdf file at <a target="_blank" rel="noopener" href="https://github.com/boxianglin/Storage/blob/main/Numerical-Solve-PDE-Post/NumericallyPDEs.pdf">here</a></p>
+<h4 id="Sample-Partial-Differential-Equation"><a href="#Sample-Partial-Differential-Equation" class="headerlink" title="Sample Partial Differential Equation"></a>Sample Partial Differential Equation</h4><script type="math/tex; mode=display">
+\begin{align*}
+& \text{Suppose given the PDE (Diffusion)} \\
+& \partial_tu=D\partial_x^2u,\ for\ x\ \in[0,1],and\ t>0\\
 \\
-&amp; \text{Exact Solution (can be found in multiple PDEs textbooks): }\\
-&amp; u(x,t) = \sum_{k=1}^{n}=\frac{4}{(k\pi)^2}sin(\frac{k\pi}{2})sin(k\pi x)e^{-0.5(k\pi )^2t}\\
+& \text{Exact Solution (can be found in multiple PDEs textbooks): }\\
+& u(x,t) = \sum_{k=1}^{n}=\frac{4}{(k\pi)^2}sin(\frac{k\pi}{2})sin(k\pi x)e^{-0.5(k\pi )^2t}\\
 \\
-&amp; \text{We are going to compute the numerical solution with }\\
-&amp; \text{the given information below. }\\
+& \text{We are going to compute the numerical solution with }\\
+& \text{the given information below. }\\
 \\
-&amp; \text{for }x \in[0,1] \text{ and t &gt; 0 :}\\
-&amp; the\ initial\ condition\ u(x,0)=\begin{cases}
-x,  &amp; \text{if } 0\leq x \leq 1/2\\
-1-x, &amp; \text{if } 1/2 &lt; x\leq1   
+& \text{for }x \in[0,1] \text{ and t > 0 :}\\
+& the\ initial\ condition\ u(x,0)=\begin{cases}
+x,  & \text{if } 0\leq x \leq 1/2\\
+1-x, & \text{if } 1/2 < x\leq1   
 \end{cases}\\
-&amp;\text{the boundary condition } u(0,t)=u(1,t)=0 \\
+&\text{the boundary condition } u(0,t)=u(1,t)=0 \\
 \\
-&amp; \text{The Explicit Difference Schema: }\\
-&amp; \frac{u_j^{n+1}-u_j^n}{\Delta t}= D\frac{u_{j+1}^n-2u_j^n+u_{j-1}^n}{(\Delta x)^2}, where\ D=\frac{1}{2}\\
+& \text{The Explicit Difference Schema: }\\
+& \frac{u_j^{n+1}-u_j^n}{\Delta t}= D\frac{u_{j+1}^n-2u_j^n+u_{j-1}^n}{(\Delta x)^2}, where\ D=\frac{1}{2}\\
 \\
 
-&amp;\text{Take }\Delta x=0.1, \Delta t=1/100 \text{ to proceed the calculations;}
-\end{align*}
-</p> 
+&\text{Take }\Delta x=0.1, \Delta t=1/100 \text{ to proceed the calculations;}
+\end{align*}</script> 
       <a class="article-more-link" href="/2021/05/22/NumericallyPDE/"
         >Read More ...</a
       >
